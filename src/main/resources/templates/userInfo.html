@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User information</title>
+</head>
+<body>
+        <table border="1">
+            <tr>
+                <td><label>Information</label></td>
+            </tr>
+            <tr>
+                <td><label th:text="${user.name}"></label></td>
+            </tr>
+            <tr>
+                <td><label th:text="${user.username}" ></label></td>
+            </tr>
+            <tr>
+                <td><label th:text="${user.email}" ></label></td>
+            </tr>
+            <tr>
+                <td><label th:text="${user.phone}" ></label></td>
+            </tr>
+            <tr>
+                <td><label th:text="${user.website}" ></label></td>
+            </tr>
+            <tr>
+                <td><label th:text="${user.address.street}" ></label></td>
+            </tr>
+            <tr>
+                <td><label th:text="${user.address.suite}" ></label></td>
+            </tr>
+            <tr>
+                <td><label th:text="${user.address.city}" ></label></td>
+            </tr>
+            <tr>
+                <td><label th:text="${user.address.zipcode}" ></label></td>
+            </tr>
+        </table>
+        <table border="1">
+            <tr>
+                <td><label>Albums</label></td>
+            </tr>
+            <th:block th:each="album : ${albums}">
+                <tr>
+                    <td th:text="${album.title}">Album</td>
+                    <td>
+                        <a th:href="@{'/user/album/' + ${album.id}}">View</a>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+    <a th:href="@{'/user/posts/' + ${user.id}}">Posts</a>
+    <a th:href="@{'/'}">Back</a>
+</body>
+</html>

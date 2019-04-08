@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Album</title>
+</head>
+<body>
+    <label th:text="${album.title}"></label>
+    <a th:href="@{'/user/album/' + ${album.id} + '/permissions'}">Manage Permissions</a>
+    <a th:href="@{'/'}">Back</a>
+    <table border="1">
+        <th:block th:each="photo : ${photos}">
+            <tr>
+                <td th:text="${photo.title}">Album</td>
+                <td>
+                    <img th:src="${photo.url}" src="" height=100 width=100/>
+                </td>
+            </tr>
+        </th:block>
+    </table>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Album Permissions</title>
+</head>
+<body>
+    <form action="#" th:action="@{'/user/album/' + ${album.id} + '/permissions'}" method="post">
+        <table border="1">
+            <tr>
+                <td>Username</td>
+                <td>Permission</td>
+            </tr>
+            <th:block th:each="user : ${users}">
+                <tr>
+                    <td th:text="${user.username}">Album</td>
+                    <td>
+                        <input type="checkbox" th:checked="${#lists.contains(usersChecked, user.username)}" th:value="${user.username}" id="example" name="example" />
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+        <input type="submit"/>
+    </form>
+    <a th:href="@{'/'}">Back</a>
+</body>
+</html>

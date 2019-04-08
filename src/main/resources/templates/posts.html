@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>Posts</td>
+        </tr>
+        <th:block th:each="post : ${posts}">
+            <tr>
+                <td th:text="${post.title}"></td>
+                <td th:text="${post.body}"></td>
+            </tr>
+            <tr th:each="comment : ${comments}">
+                <label th:text="${comment.name}"></label>
+                <label th:text="${comment.body}"></label>
+            </tr>
+        </th:block>
+    </table>
+    <a th:href="@{'/'}">Back</a>
+</body>
+</html>
